@@ -1,0 +1,28 @@
+{
+  "name": "sc-socket",
+  "version": "1.0.0",
+  "homepage": "https://github.com/SocketCluster/sc-socket",
+  "authors": [
+    "Jonathan Gros-Dubois <grosjona@yahoo.com.au>"
+  ],
+  "description": "Socket client component for Polymer and SocketCluster",
+  "keywords": [
+    "Socket",
+    "Client",
+    "Polymer",
+    "Realtime"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "1.1.5",
+    "socketcluster-client": "2.3.x"
+  }
+}
