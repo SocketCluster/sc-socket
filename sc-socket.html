@@ -21,6 +21,23 @@
             return window.scSocket;
           }
         }
+      },
+
+      attached: function () {
+        var self = this;
+
+        this._handleAuthStateChange = function () {
+          self.notifyPath('socket.authState', self.socket.authState);
+          self.notifyPath('socket.authToken', self.socket.authToken);
+          self.notifyPath('socket.signedAuthToken', self.socket.signedAuthToken);
+        };
+
+        this._handleAuthStateChange();
+        this.socket.on('authStateChange', this._handleAuthStateChange);
+      },
+
+      detached: function () {
+        this.socket.off('authStateChange', this._handleAuthStateChange);
       }
     });
   </script>
