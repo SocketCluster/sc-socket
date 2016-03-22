@@ -16,19 +16,21 @@
         socket: {
           type: Object,
           notify : true,
-          value: function () {
-            if (!window.scSocket) {
-              // This makes the socket object accessible globally on window.
-              // we will allow this for debugging/convenience.
-              if (this.options) {
-                window.scSocket = socketCluster.connect(this.options);
-              } else {
-                window.scSocket = socketCluster.connect();
-              }
-            }
-            return window.scSocket;
+          computed: 'initSocket(options)'
+        }
+      },
+
+      initSocket: function (options) {
+        if (!window.scSocket) {
+          // This makes the socket object accessible globally on window.
+          // we will allow this for debugging/convenience.
+          if (options) {
+            window.scSocket = socketCluster.connect(options);
+          } else {
+            window.scSocket = socketCluster.connect();
           }
         }
+        return window.scSocket;
       },
 
       attached: function () {
